@@ -1,9 +1,31 @@
 public class Time
 {
   // TODO: Part A - put your attributes here
+  int hours;
+  int minutes;
+  int seconds;
 
 
   // TODO: Part B - create your non-default constructor
+  public Time(int hours, int minutes, int seconds) {
+    if (hours >= 0 && hours <= 23) {
+      this.hours = hours;
+    } else {
+      this.hours = 0;
+    }
+
+    if (minutes >= 0 && minutes <= 59) {
+      this.minutes = minutes;
+    } else {
+      this.minutes = 0;
+    }
+
+    if (seconds >= 0 && minutes <= 59) {
+      this.seconds = seconds;
+    } else {
+      this.seconds = 0;
+    }
+  }
   /**
   * Precondition: The number of hours is between 0 and 23 inclusive.
   * The number of minutes and seconds is between 0 and 59 inclusive.
@@ -11,11 +33,16 @@ public class Time
 
 
   // TODO: Part C - create your default constructor
+  public Time() {
+    hours = 0;
+    minutes = 0;
+    seconds = 0;
+  }
 
 
   // TODO: Part D - complete the documentation for the pad method
   /**
-  * Description: 
+  * Description: adds a 0 infront if it is less than 10
   * Precondition: The value is greater than 0.
   */
   private String pad(int value)
@@ -31,12 +58,26 @@ public class Time
   // TODO: Part E - complete the toString method; use the pad method as part of your solution
   public String toString()
   {
-    return null;
+    return pad(hours) + ":" + pad(minutes) + ":" + pad(seconds);
   }
 
   // TODO: Part F - write the tick method
   public void tick()
   {
+    seconds+=1;
+    if (seconds >= 60) {
+      seconds-=60;
+      minutes+=1;
+    }
+
+    if (minutes >= 60) {
+      minutes-=60;
+      hours+=1;
+    }
+
+    if (hours >= 24) {
+      hours = 0;
+    }
 
   }
 
