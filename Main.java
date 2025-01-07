@@ -4,6 +4,14 @@ public class Main
 {
   public static void main(String[] args)
   {
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Enter an initial time in hours, minutes, and seconds in that order");
+    int hours = sc.nextInt();
+    int minutes = sc.nextInt();
+    int seconds = sc.nextInt();
+    Time currentTime = new Time(hours, minutes, seconds);
+    currentTime.tick();
+    System.out.println(currentTime.toString());
     // Test your tick method below using the Scanner class to
     // prompt the user for an initial time, and use the tick method
     // on that Time object.  Check that the resulting time is correct
@@ -11,8 +19,10 @@ public class Main
     
   
     // Uncomment these lines of code when you are ready to test your tick and add methods
-    // testTick();
-    // testAdd();
+    testTick();
+    testAdd();
+
+    sc.close();
   }
 
   public static void testTick()
@@ -102,8 +112,8 @@ public class Main
                     + time1
                     + " and should be (00:00:00)");
 
-    time1 = new Time(9, 30, 30);
-    time2 = new Time(2, 45, 45);
+    time1 = new Time(23, 59, 59);
+    time2 = new Time(23, 59, 59);
     time1.add(time2);
     System.out.println(
             "The result of (23,59,59).add(23,59,59) is "

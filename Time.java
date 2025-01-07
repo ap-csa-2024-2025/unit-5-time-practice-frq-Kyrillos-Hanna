@@ -1,9 +1,9 @@
 public class Time
 {
   // TODO: Part A - put your attributes here
-  int hours;
-  int minutes;
-  int seconds;
+  private int hours;
+  private int minutes;
+  private int seconds;
 
 
   // TODO: Part B - create your non-default constructor
@@ -87,6 +87,14 @@ public class Time
   */
   public void add(Time offset)
   {
+    this.hours += offset.hours;  
+    this.minutes += offset.minutes; 
+    this.seconds += offset.seconds; 
 
+    this.minutes+=(this.seconds/60);
+    this.seconds = this.seconds % 60;
+    this.hours+=(this.minutes/60);
+    this.minutes = this.minutes % 60;;
+    this.hours = this.hours % 24;
   }
 }
